@@ -7,5 +7,6 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 
 ### Extra Configurations 
 - Lazy Git 
-- Flutter Compatibility 
+- Flutter Compatibility
+
 
