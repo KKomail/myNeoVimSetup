@@ -3,19 +3,29 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
-      servers = { pyright = {} }, -- Configure Pyright for Python support
+      servers = {
+        pyright = {}, -- Python support
+        tsserver = {}, -- TypeScript support
+        sourcekit = { -- Swift support
+          cmd = { "xcrun", "sourcekit-lsp" }, -- Use xcrun to find sourcekit-lsp
+          filetypes = { "swift" },
+          root_dir = function(fname)
+            return require("lspconfig.util").find_git_ancestor(fname) or vim.loop.os_homedir()
+          end,
+        },
+      },
     },
   },
 
   -- TypeScript server configuration with additional setup using typescript.nvim
   {
     "neovim/nvim-lspconfig",
-    dependencies = { "jose-elias-alvarez/typescript.nvim" }, -- TypeScript support
+    dependencies = { "jose-elias-alvarez/typescript.nvim" },
     opts = {
-      servers = { tsserver = {} }, -- Configure TypeScript server
+      servers = { tsserver = {} },
       setup = {
         tsserver = function(_, opts)
-          require("typescript").setup({ server = opts }) -- Setup TypeScript server with additional options
+          require("typescript").setup({ server = opts })
           return true
         end,
       },

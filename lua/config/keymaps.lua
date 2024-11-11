@@ -10,3 +10,10 @@ vim.keymap.set("n", "<leader>r", require("telescope").extensions.flutter.command
 -- Other useful key mappings can be added here as needed:
 -- Example: Open widget tree actions (replace with actual command if different)
 vim.keymap.set("n", "<leader>ca", "<cmd>FlutterOutline<CR>", { desc = "Open Widget Tree" })
+
+-- run python from terminal
+vim.keymap.set("n", "<leader>r", function()
+  vim.cmd("w") -- Save the current file
+  vim.cmd("vsplit") -- opens a terminal on the right side
+  vim.cmd("terminal python3 %") -- Run the current file with Python 3
+end, { noremap = true, silent = true })
