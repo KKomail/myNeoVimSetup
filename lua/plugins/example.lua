@@ -3,7 +3,6 @@
 local plugins_list = {}
 
 local plugin_files = {
-  "gruvbox",
   "trouble",
   "cmp",
   "telescope",
