@@ -1,3 +1,4 @@
+-- custom colour scheme
 -- catppuccin_setup.lua
 return {
   {

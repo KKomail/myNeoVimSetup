@@ -5,8 +5,12 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim", -- Required dependency for utility functions
     "stevearc/dressing.nvim", -- Optional: Enhances vim.ui.select functionality
+    "hrsh7th/nvim-cmp", -- Autocompletion
+    "hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
+    "L3MON4D3/LuaSnip", -- Snippet engine
   },
   config = function()
+    -- Setup flutter-tools
     require("flutter-tools").setup({
       ui = {
         border = "rounded", -- UI border style
@@ -22,6 +26,15 @@ return {
           enabled = true, -- Enable debugging features
           run_via_dap = true, -- Use DAP for running Flutter apps
         },
+      },
+      lsp = {
+        on_attach = function(client, bufnr)
+          -- Key mappings for LSP
+          local opts = { noremap = true, silent = true }
+          vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts) -- go to definition
+          vim.api.nvim_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts) -- go to references
+          -- Additional mappings can be added here
+        end,
       },
     })
 
