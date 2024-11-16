@@ -1,5 +1,5 @@
--- nvim-lspconfig: Quickstart configurations for Language Server Protocol (LSP)
 return {
+  -- Neovim LSP Configuration
   {
     "neovim/nvim-lspconfig",
     opts = {
@@ -7,8 +7,8 @@ return {
         pyright = {}, -- Python support
         tsserver = {}, -- TypeScript support
         sourcekit = { -- Swift support
-          cmd = { "xcrun", "sourcekit-lsp" }, -- Use xcrun to find sourcekit-lsp
-          filetypes = { "swift" },
+          cmd = { "xcrun", "sourcekit-lsp" }, -- Command to start sourcekit-lsp
+          filetypes = { "swift" }, -- File types supported by sourcekit-lsp
           root_dir = function(fname)
             return require("lspconfig.util").find_git_ancestor(fname) or vim.loop.os_homedir()
           end,
@@ -22,7 +22,9 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = { "jose-elias-alvarez/typescript.nvim" },
     opts = {
-      servers = { tsserver = {} },
+      servers = {
+        tsserver = {},
+      },
       setup = {
         tsserver = function(_, opts)
           require("typescript").setup({ server = opts })
