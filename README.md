@@ -9,4 +9,5 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 - Lazy Git 
 - Flutter Compatibility
 
-
+## To Install (Windows) 
+git clone https://github.com/KKomail/myNeoVimSetup.git $ENV:USERPROFILE\AppData\Local\nvim
