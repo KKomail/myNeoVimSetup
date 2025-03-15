@@ -12,7 +12,7 @@ return {
         desc = "Find Plugin File",
       },
       {
-        "<leader>ff",
+        "<leader>f",
         "<cmd>Telescope flutter commands<CR>",
         desc = "Flutter Commands", -- Keymap for accessing Flutter commands via Telescope
       },

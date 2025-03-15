@@ -3,8 +3,11 @@
 local plugins_list = {}
 
 local plugin_files = {
+  "catpuccin",
   "trouble",
   "cmp",
+  "lazygit",
+  "flutter",
   "telescope",
   "lsp",
   "treesitter",

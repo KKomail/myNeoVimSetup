@@ -15,31 +15,29 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  -- Spec: Defines what plugins we are loading
   spec = {
     -- add LazyVim and import its plugins
-    --  imports the plugins files
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import/override with your plugins
+    -- { import = "plugins.cmp" }, -- Don't think I need this
     { import = "plugins" },
+    enabled = function()
+      vim.notify("Loading cmp.lua", vim.log.levels.INFO)
+      return true
+    end,
   },
   defaults = {
-    -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
-    -- If you know what you're doing, you can set this to `true` to have all your custom plugins lazy-loaded by default.
-    lazy = false,
-    -- It's recommended to leave version=false for now, since a lot the plugin that support versioning,
-    -- have outdated releases, which may break your Neovim install.
-    version = false, -- always use the latest git commit
-    -- version = "*", -- try installing the latest stable version for plugins that support semver
+    lazy = false, -- Load plugins during startup
+    version = false, -- always use the latest commit
   },
-  -- install color scheme / themes
-  install = { colorscheme = { "tokyonight", "habamax" } },
   checker = {
     enabled = true, -- check for plugin updates periodically
     notify = false, -- notify on update
   }, -- automatically check for plugin updates
   performance = {
     rtp = {
-      -- disable some rtp plugins
+      -- disable some rtp plugins (that I don't need and improves performance)
       disabled_plugins = {
         "gzip",
         -- "matchit",
